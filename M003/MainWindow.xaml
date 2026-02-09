@@ -1,0 +1,134 @@
+﻿<Window x:Class="M003.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="450" Width="300"
+		WindowStartupLocation="CenterScreen" Topmost="True">
+    <StackPanel>
+		<!--Width und Height-->
+		<!--Setzt die absolute Höhe/Breite in Pixel-->
+		<!--Sollte generell nicht selbst gesetzt werden, sondern von Layoutkomponenten berechnet werden-->
+		<Button Name="A" Content="Hallo" Click="A_Click" Width="50"/>
+		
+		<!--Margin und Padding-->
+		<!--Seitenabstände-->
+		<!--Margin: Abstand der Komponente zur umliegenden Komponente-->
+		<!--Padding: Abstand vom Inhalt der Komponente zu sich selbst-->
+		<!--Sind Gegenteile zueinander-->
+		<Button Content="Hallo" Margin="10" Padding="10"/>
+		
+		<!--Drei Angaben:-->
+		<!--Eine Zahl: Gleicher Abstand auf allen Seiten-->
+		<!--Zwei Zahlen: X-Abstand, Y-Abstand-->
+		<!--Vier Zahlen: Links, Oben, Rechts, Unten-->
+
+		<!--Alignment-->
+		<!--Ausrichtung des Elements àla Word-->
+		<!--Linksbündig, Zentriert, Rechtsbündig-->
+		<Button Content="Hallo" Width="200"
+				HorizontalAlignment="Right"
+				HorizontalContentAlignment="Left"/>
+		
+		<!--StackPanel-->
+		<!--Stapelt die Inhalte-->
+		<!--Kann auch vertikal stapeln-->
+		<StackPanel>
+			<Button Content="Hallo"/>
+			<Button Content="Hallo"/>
+			<Button Content="Hallo"/>
+			<Button Content="Hallo"/>
+		</StackPanel>
+
+		<StackPanel Orientation="Horizontal">
+			<Button Content="Hallo" Margin="0, 0, 5, 0"/>
+			<Button Content="Hallo" Margin="0, 0, 5, 0"/>
+			<Button Content="Hallo" Margin="0, 0, 5, 0"/>
+			<Button Content="Hallo" Margin="0, 0, 5, 0"/>
+		</StackPanel>
+		
+		<!--WrapPanel-->
+		<!--1:1 wie StackPanel, aber wenn Komponente über den Rand hinauslaufen, werden die gewrappt-->
+		<WrapPanel Orientation="Horizontal">
+			<Button Content="Hallo Welt!" Margin="0, 0, 5, 0"/>
+			<Button Content="Hallo Welt!" Margin="0, 0, 5, 0"/>
+			<Button Content="Hallo Welt!" Margin="0, 0, 5, 0"/>
+			<Button Content="Hallo Welt!" Margin="0, 0, 5, 0"/>
+			<Button Content="Hallo Welt!" Margin="0, 0, 5, 0"/>
+		</WrapPanel>
+		
+		<!--DockPanel-->
+		<!--Dockt Komponente an den vier Seiten an-->
+		<!--Eine fünfte Komponente in der Mitte-->
+		<!--Siehe beliebige Webseiten-->
+		<DockPanel>
+			<!--WICHTIG: Reihenfolgen beachten-->
+			<Button Content="Hallo Welt!" DockPanel.Dock="Top"/>
+			<Button Content="Hallo Welt!" DockPanel.Dock="Bottom"/>
+			<Button Content="Hallo Welt!" DockPanel.Dock="Left"/>
+			<Button Content="Hallo Welt!" DockPanel.Dock="Right"/>
+			<Button Content="Hallo Welt!"/>
+		</DockPanel>
+		
+		<!--Grid-->
+		<!--Definiert Zeilen und Spalten-->
+		<!--Einzelne Komponente werden dann in Zeilen/Spalten hineingelegt-->
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<!--Standardbreite: *-->
+				<!--*: Gleiche Breite für alle Spalten/Zeilen-->
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="2*"/>
+				<ColumnDefinition Width="3*"/>
+				<!--Gesamt 6*, 50px pro *-->
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<!--Auto: Zeile ist nur so hoch, wie der höchste Inhalt hoch ist-->
+				<RowDefinition Height="20"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+
+			<!--Mit Grid.Row/Grid.Column werden Komponente positioniert-->
+			<TextBlock Grid.Column="0" Grid.Row="0" Text="Hallo"/>
+			<Button Content="Hallo Welt" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+		</Grid>
+		
+		<!--UniformGrid-->
+		<!--Akzeptiert nur Rows und Columns-->
+		<!--Jede Komponente wird automatisch positioniert-->
+		<!--Vorteil: Es ist kein Grid-->
+		<!--Nachteil: Es ist kein Grid-->
+		<UniformGrid Columns="3" Rows="3">
+			<Button Content="Hallo Welt!"/>
+			<Button Content="Hallo Welt!"/>
+			<Button Content="Hallo Welt!"/>
+			<Button Content="Hallo Welt!"/>
+			<Button Content="Hallo Welt!"/>
+			<Button Content="Hallo Welt!"/>
+			<Button Content="Hallo Welt!"/>
+			<Button Content="Hallo Welt!"/>
+			<Button Content="Hallo Welt!"/>
+		</UniformGrid>
+		
+		<!--ViewBox-->
+		<!--Skaliert ihren Inhalt anhand ihrer Größe-->
+		<Viewbox>
+			<Button Content="Hallo Welt!"/>
+		</Viewbox>
+		
+		<!--Border-->
+		<!--Legt einen Rahmen um eine Komponente-->
+		<Border BorderBrush="Black" BorderThickness="2">
+			<Border BorderBrush="Aqua" BorderThickness="2">
+				<TextBlock Text="Hallo Dominik"/>
+			</Border>
+		</Border>
+
+		<!--ScrollViewer-->
+		<!--Macht Inhalt scrollbar-->
+		<!--Funktioniert nicht wirklich in einem StackPanel-->
+		<ScrollViewer Height="100">
+			<TextBlock Text="Hallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo VladHallo Vlad"
+					   TextWrapping="Wrap"/>
+		</ScrollViewer>
+	</StackPanel>
+</Window>
