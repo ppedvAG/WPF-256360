@@ -1,0 +1,107 @@
+﻿<Window x:Class="M002.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="450" Width="300"
+		WindowStartupLocation="CenterScreen" Topmost="True">
+    <StackPanel>
+		<!--Label-->
+		<!--Ausgabe von Text-->
+		<!--Label hat einen Content, TextBlock hat einen Text (string)-->
+		<!--Label kann alles anzeigen (z.B. Images)-->
+		<Label Content="Hallo Welt"/>
+		
+		<!--Alternative: TextBlock-->
+		<!--Besser für Text, kann aber nur Text anzeigen-->
+		<TextBlock Text="Hallo Welt" TextAlignment="Center"/>
+		
+		<!--Image-->
+		<!--Anzeigen von Bildern-->
+		<!--Problem: Pfade-->
+		<Image Source="C:\Users\lk3\source\repos\WPF_2026_02_09\M002\ppedv-Logo.png"/>
+
+		<!--Button-->
+		<!--Kennt ihr-->
+		<TextBlock Name="Output"/>
+		<Button Content="Hallo Welt" Click="Button_Click"/>
+		
+		<!--TextBox-->
+		<!--Eingabe vom User-->
+		<TextBox Name="Eingabe" KeyDown="Eingabe_KeyDown"/>
+		<Button Content="Bestätigen" Click="Button_Click_1"/>
+		
+		<!--ComboBox-->
+		<!--Auswahl zw. mehreren Elementen bieten-->
+		<!--Dropdown-->
+		<ComboBox SelectionChanged="ComboBox_SelectionChanged" Name="Dropdown">
+			<ComboBoxItem Content="Lukas"/>
+			<ComboBoxItem Content="Vlad"/>
+			<ComboBoxItem Content="Dominik"/>
+		</ComboBox>
+		
+		<!--ItemsSource-->
+		<!--Items dynamisch anhand einer Liste im Backend generieren-->
+		<ComboBox Name="Zahlen"/>
+		
+		<!--CheckBox-->
+		<!--Ja-/Nein Auswahl-->
+		<CheckBox Content="Hallo" IsChecked="{x:Null}"/>
+		
+		<!--RadioButton-->
+		<!--1-von-X Auswahl-->
+		<RadioButton GroupName="RB" Content="Hallo"/>
+		<RadioButton GroupName="RB" Content="Hallo"/>
+		<RadioButton GroupName="RB" Content="Hallo"/>
+		<RadioButton GroupName="RB" Content="Hallo"/>
+
+		<!--Oberklasse von CheckBox und RadioButton: ToggleButton-->
+		<ToggleButton Content="Hallo Welt"/>
+		
+		<!--Slider-->
+		<!--Bereichsauswahl-->
+		<Slider Minimum="0" Maximum="10" Value="0" ValueChanged="Slider_ValueChanged"/>
+	
+		<!--Ganzzahliger Slider mit Ticks-->
+		<Slider Minimum="0" Maximum="100" Value="0" ValueChanged="Slider_ValueChanged"
+				TickFrequency="5" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Foreground="Black"/>
+
+		<!--Ticks: Irreguläre Intervalle (unterschiedliche Abstände)-->
+		<Slider Minimum="0" Maximum="10" Value="0" ValueChanged="Slider_ValueChanged"
+				Ticks="1, 2, 5, 10" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Foreground="Black"/>
+	
+		<!--ProgressBar-->
+		<!--Fortschritt anzeigen-->
+		<ProgressBar Minimum="0" Maximum="100" Value="70" Height="20"
+					 IsIndeterminate="True" Foreground="Red"/>
+		
+		<!--Menu-->
+		<!--Menüleiste oben am Bildschirmrand-->
+		<!--Muss beliebig viele MenuItems verschachteln-->
+		<Menu>
+			<MenuItem Header="Datei">
+				<MenuItem Header="Neu">
+					<MenuItem Header="Projekt"/>
+					<Separator/>
+					<MenuItem Header="Datei" Click="Button_Click"/>
+				</MenuItem>
+				<MenuItem Header="Öffnen"/>
+				<MenuItem Header="Speichern">
+					<MenuItem Header="Speichern Unter"/>
+				</MenuItem>
+				<MenuItem Header="Schließen"/>
+			</MenuItem>
+			<MenuItem Header="Bearbeiten">
+
+			</MenuItem>
+			<MenuItem Header="Hilfe">
+
+			</MenuItem>
+		</Menu>
+
+		<Separator Margin="20"/>
+
+		<!--ListBox-->
+		<ListBox Name="LB" SelectionMode="Extended"/>
+
+		<ItemsControl Name="IC"/>
+	</StackPanel>
+</Window>
