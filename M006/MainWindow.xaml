@@ -14,7 +14,7 @@
 		<Style TargetType="Button">
 			<Setter Property="Background" Value="{StaticResource DefaultBG}"/>
 			<Setter Property="Background">
-				Auslagern von Value (für komplexe Properties)
+				<!--Auslagern von Value (für komplexe Properties)-->
 				<Setter.Value>
 					<LinearGradientBrush>
 						<GradientStop Offset="0" Color="Aqua"/>
