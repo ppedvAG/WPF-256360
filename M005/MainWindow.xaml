@@ -1,0 +1,29 @@
+﻿<Window x:Class="M005.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:M005"
+        Title="MainWindow" Height="450" Width="800"
+		WindowStartupLocation="CenterScreen" Topmost="True"
+		DataContext="{Binding RelativeSource={RelativeSource Self}}">
+	<StackPanel>
+		<!--Data Binding-->
+		<!--Binding an Backendvariablen-->
+		<!--Wird immer verwendet in der Praxis-->
+
+		<!--DataContext-->
+		<!--Beliebiges Objekt, das von der GUI bei den Bindings ausgelesen wird-->
+		<!--Der DataContext kann auf beliebigen GUI Komponenten gesetzt werden-->
+		<!--Der DataContext wird nach unten vererbt (Window -> StackPanel -> Button -> ...)-->
+
+		<!--DataContext setzen-->
+		<!--Im Backend: this.DataContext = this;-->
+		<!--Im Frontend: DataContext="{Binding RelativeSource={RelativeSource Self}}"-->
+		<TextBlock Text="{Binding Counter}" FontSize="40" TextAlignment="Center"/>
+		<Button Click="Button_Click" Content="Zähler++"/>
+		
+		<!--ObservableCollection-->
+		<!--Effektiv eine Liste, aber Benachrichtigt bei Änderungen ihrer Inhalte-->
+		<!--WICHTIG: Die Listenelemente selbst benachrichtigen nicht (solange sie nicht selbst INotifyPropertyChanged haben)-->
+		<ListBox ItemsSource="{Binding Fahrzeuge}"/>
+	</StackPanel>
+</Window>

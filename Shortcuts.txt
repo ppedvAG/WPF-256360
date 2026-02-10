@@ -1,0 +1,9 @@
+Strg + .: Schnelloptionen anzeigen
+Strg R, R: Member umbenennen (wird überall umbenannt)
+Strg K, D: Code formatieren
+Strg K, C: Code auskommentieren
+Strg K, U: Code einkommentieren
+Alt + Pfeiltaste oben/unten: Codezeilen bewegen
+Strg + D: Derzeitige Zeile kopieren
+Alt + Maus Ziehen: Multizeilencursor
+F12: Zur Definition springen
