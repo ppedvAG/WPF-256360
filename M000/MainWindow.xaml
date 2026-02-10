@@ -4,8 +4,18 @@
         xmlns:local="clr-namespace:M000"
         Title="MainWindow" Height="450" Width="800"
 		WindowStartupLocation="CenterScreen" Topmost="True"
-		ResizeMode="NoResize" SizeToContent="Height" FontSize="14">
-    <StackPanel>
-
-    </StackPanel>
+		ResizeMode="NoResize" SizeToContent="Height" FontSize="14"
+		DataContext="{Binding RelativeSource={RelativeSource Self}}">
+	<Window.Resources>
+		<local:BooleanToGenderConverter x:Key="BGC"/>
+	</Window.Resources>
+	<StackPanel>
+		<RadioButton Content="M" GroupName="Gender"
+					 IsChecked="{Binding DiePerson.Gender, Converter={StaticResource BGC}, ConverterParameter={x:Static local:Geschlecht.M}}"/>
+		<RadioButton Content="W" GroupName="Gender"
+					 IsChecked="{Binding DiePerson.Gender, Converter={StaticResource BGC}, ConverterParameter={x:Static local:Geschlecht.W}}"/>
+		<RadioButton Content="D" GroupName="Gender"
+					 IsChecked="{Binding DiePerson.Gender, Converter={StaticResource BGC}, ConverterParameter={x:Static local:Geschlecht.D}}"/>
+		<Button Click="Button_Click" Content="OK"/>
+	</StackPanel>
 </Window>

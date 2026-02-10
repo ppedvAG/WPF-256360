@@ -1,0 +1,19 @@
+﻿<Application x:Class="M006.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:M006"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+		<!--Genau ein externes Dict:-->
+		<!--<ResourceDictionary Source="/Extern.xaml"/>-->
+		
+		<!--Mehr als ein externes Dict: -->
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="/Extern.xaml"/>
+				<!--<ResourceDictionary Source="/PresentationFramework.Classic;component/themes/Classic.xaml"/>-->
+				<ResourceDictionary Source="/Styles.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>
