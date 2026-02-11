@@ -43,10 +43,10 @@
 		</Button>
 		
 		<!--Beispiel: Button aktivieren wenn 4 CheckBoxen aktiviert sind-->
-		<CheckBox Content="Hallo" Name="CB1" IsChecked="{Binding CB1Checked, Mode=OneWay}"/>
-		<CheckBox Content="Hallo" Name="CB2" IsChecked="{Binding CB2Checked, Mode=OneWay}"/>
-		<CheckBox Content="Hallo" Name="CB3" IsChecked="{Binding CB3Checked, Mode=OneWay}"/>
-		<CheckBox Content="Hallo" Name="CB4" IsChecked="{Binding CB4Checked, Mode=OneWay}"/>
+		<CheckBox Content="Hallo" Name="CB1" IsChecked="{Binding CB1Checked, Mode=OneWayToSource}"/>
+		<CheckBox Content="Hallo" Name="CB2" IsChecked="{Binding CB2Checked, Mode=OneWayToSource}"/>
+		<CheckBox Content="Hallo" Name="CB3" IsChecked="{Binding CB3Checked, Mode=OneWayToSource}"/>
+		<CheckBox Content="Hallo" Name="CB4" IsChecked="{Binding CB4Checked, Mode=OneWayToSource}"/>
 		<Button Content="CheckBoxen aktiviert">
 			<Button.Style>
 				<!--Wenn eine Komponente unsichtbar/deaktiviert ist, wird der Style auch deaktiviert-->
@@ -138,5 +138,6 @@
 				</Style>
 			</Button.Style>
 		</Button>
+		<Button Click="Button_Click" Content="Test"/>
 	</StackPanel>
 </Window>
