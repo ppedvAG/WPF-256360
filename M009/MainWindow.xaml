@@ -1,0 +1,68 @@
+﻿<Window x:Class="M009.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:M009"
+        Title="MainWindow" Height="450" Width="800"
+		WindowStartupLocation="CenterScreen" Topmost="True"
+		DataContext="{Binding RelativeSource={RelativeSource Self}}">
+	<Window.Resources>
+		<!--ValidatesOnTargetUpdated: Startvalidierung-->
+		<local:LetterValidation x:Key="LetterValid" ValidatesOnTargetUpdated="True"/>
+		<local:LengthValidation x:Key="LengthValid" ValidatesOnTargetUpdated="True" Min="3" Max="15"/>
+
+		<!--ErrorTemplate-->
+		<!--Darstellung für Fehler anpassen-->
+		<ControlTemplate x:Key="ErrorTemp">
+			<Border BorderBrush="Red" BorderThickness="2">
+				<StackPanel>
+					<!--AdornedElementPlaceholder: Das gerade validierende UI-Element-->
+					<AdornedElementPlaceholder Name="AEP"/>
+
+					<Popup IsOpen="{Binding ElementName=AEP, Path=AdornedElement.IsMouseOver, Mode=OneWay}" Placement="MousePoint">
+						<TextBlock Text="{Binding ElementName=AEP, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+								   Background="White" Foreground="Red" FontSize="16"/>
+					</Popup>
+				</StackPanel>
+			</Border>
+		</ControlTemplate>
+	</Window.Resources>
+    <StackPanel Margin="10">
+		<!--Validation-->
+		<!--Bei Usereingaben die besagten Eingaben prüfen auf Fehler-->
+		
+		<!--3 Optionen-->
+		<!--ValidationRules-->
+		<!--ValidateOnException-->
+		<!--ValidateOnDataError-->
+		
+		<!--ValidationRules-->
+		<!--Eigene C#-Klassen die die Validierungslogik enthalten-->
+		<TextBox>
+			<TextBox.Text>
+				<Binding Path="Eingabe">
+					<Binding.ValidationRules>
+						<local:LetterValidation ValidatesOnTargetUpdated="True"/>
+					</Binding.ValidationRules>
+				</Binding>
+			</TextBox.Text>
+		</TextBox>
+		<Button Click="Button_Click" Content="Test"/>
+		
+		<!--ValidationRules können per se nicht in der Kurzform eingebunden werden-->
+		<!--Lösung: Eigene MarkupExtension-->
+		<TextBox Text="{local:ValidationBinding Binding={Binding Eingabe}, 
+						Rule1={StaticResource LetterValid}, 
+						Rule2={StaticResource LengthValid}}"
+				 Validation.ErrorTemplate="{StaticResource ErrorTemp}"/>
+
+		<!--ValidatesOnExceptions-->
+		<!--Wenn eine Exception im Backend geworfen wird, wird hier validiert-->
+		<TextBox Text="{Binding Eingabe2, ValidatesOnExceptions=True}"
+				 Validation.ErrorTemplate="{StaticResource ErrorTemp}"/>
+		
+		<!--ValidateOnDataError-->
+		<!--Validiert alle Felder an einem Punkt im Backendcode-->
+		<TextBox Text="{Binding Eingabe3, ValidatesOnDataErrors=True}"
+				 Validation.ErrorTemplate="{StaticResource ErrorTemp}"/>
+	</StackPanel>
+</Window>
