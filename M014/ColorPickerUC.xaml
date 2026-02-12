@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="M014.ColorPickerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:M014"
+			 Name="Self">
+	<UserControl.Resources>
+		<local:ColorToBrushConverter x:Key="CBC"/>
+	</UserControl.Resources>
+	<StackPanel Margin="10">
+		<local:ColorSlider Text="R: " TextColor="Red" SliderValue="{Binding ElementName=Self, Path=R, Mode=TwoWay}"/>
+		<local:ColorSlider Text="G: " TextColor="Green" SliderValue="{Binding ElementName=Self, Path=G, Mode=TwoWay}"/>
+		<local:ColorSlider Text="B: " TextColor="Blue" SliderValue="{Binding ElementName=Self, Path=B, Mode=TwoWay}"/>
+		<local:ColorSlider Text="A: " TextColor="Black" SliderValue="{Binding ElementName=Self, Path=A, Mode=TwoWay}"/>
+
+		<!--Teil 2: ColorPicker selbst zu UC konvertieren-->
+		<!--1. Farbe vom Rechteck bindbar machen (nach außen)-->
+		<!--2. Slider an eine gesetzte Farbe anpassen-->
+		<TextBlock Text="{Binding ElementName=ColorRect, Path=Fill, StringFormat='Picked color: {0}'}" TextAlignment="Center"/>
+		<Rectangle Stroke="Black" StrokeThickness="2" Width="100" Height="100" Name="ColorRect" Fill="{Binding ElementName=Self, Path=PickedColor, Converter={StaticResource CBC}, Mode=TwoWay}"/>
+	</StackPanel>
+</UserControl>

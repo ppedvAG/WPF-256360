@@ -1,0 +1,32 @@
+﻿<Window x:Class="M014.ColorPicker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:M014"
+        Title="ColorPicker" Height="300" Width="300"
+		WindowStartupLocation="CenterScreen" Topmost="True">
+    <StackPanel Margin="10">
+		<!--Hier müssen Text, Textfarbe und SliderValue verfügbar sein-->
+		<local:ColorSlider Text="R: " TextColor="Red" x:Name="RSlider"/>
+		<local:ColorSlider Text="G: " TextColor="Green" x:Name="GSlider"/>
+		<local:ColorSlider Text="B: " TextColor="Blue" x:Name="BSlider"/>
+		<local:ColorSlider Text="A: " TextColor="Black" x:Name="ASlider"/>
+		
+		<!--Teil 2: ColorPicker selbst zu UC konvertieren-->
+		<!--1. Farbe vom Rechteck bindbar machen (nach außen)-->
+		<!--2. Slider an eine gesetzte Farbe anpassen-->
+		<TextBlock Text="{Binding ElementName=ColorRect, Path=Fill, StringFormat='Picked color: {0}'}" TextAlignment="Center"/>
+		<Rectangle Stroke="Black" StrokeThickness="2" Width="100" Height="100" Name="ColorRect">
+			<Rectangle.Fill>
+				<MultiBinding>
+					<Binding ElementName="RSlider" Path="SliderValue"/>
+					<Binding ElementName="GSlider" Path="SliderValue"/>
+					<Binding ElementName="BSlider" Path="SliderValue"/>
+					<Binding ElementName="ASlider" Path="SliderValue"/>
+					<MultiBinding.Converter>
+						<local:FourValueToBrushConverter/>
+					</MultiBinding.Converter>
+				</MultiBinding>
+			</Rectangle.Fill>
+		</Rectangle>
+	</StackPanel>
+</Window>

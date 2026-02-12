@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace M016;
+﻿namespace M016;
 
 internal class Program
 {

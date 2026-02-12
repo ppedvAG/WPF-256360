@@ -1,0 +1,20 @@
+﻿<Window x:Class="M014.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:M014"
+        Title="MainWindow" Height="450" Width="800"
+		WindowStartupLocation="CenterScreen" Topmost="True"
+		DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <StackPanel>
+		<!--UserControls-->
+		<!--Eigene GUI-Komponente-->
+		<!--Werden hauptsächlich für Pages verwendet-->
+		<!--Benötigen DependencyProperties-->
+		
+		<!--Aufgabe: ColorPicker zu einem UC umbauen-->
+		<!--1. DockPanels zu UC umbauen-->
+		<!--2. ColorPicker selbst zu UC umbauen-->
+		<local:ColorPickerUC PickedColor="{Binding Lieblingsfarbe, Mode=TwoWay}"/>
+		<Button Click="Button_Click" Content="Test"/>
+	</StackPanel>
+</Window>
